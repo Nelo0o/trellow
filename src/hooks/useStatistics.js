@@ -1,11 +1,22 @@
 import { useState, useEffect } from 'react';
 import useBoards from './useBoards';
+import { auth } from '../firebaseConfig';
 
 const useStatistics = () => {
   const [stats, setStats] = useState([]);
   const { boards, getAllTasks } = useBoards();
+  const user = auth.currentUser;
 
   useEffect(() => {
+    if (!user) {
+      setStats([
+        { icon: 'dashboard', value: '0', label: 'Tableaux' },
+        { icon: 'list', value: '0', label: 'Tâches' },
+        { icon: 'check-circle', value: '0', label: 'Terminées' }
+      ]);
+      return;
+    }
+
     const fetchStats = async () => {
       try {
         const taskCount = await getAllTasks();
@@ -38,7 +49,7 @@ const useStatistics = () => {
     };
 
     fetchStats();
-  }, [boards, getAllTasks]);
+  }, [boards, getAllTasks, user]);
 
   return stats;
 };
