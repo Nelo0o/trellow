@@ -43,9 +43,9 @@ Trellow est une application mobile développée avec React Native et Expo qui pe
 - Thème cohérent et personnalisé
 
 ## Installation
-### Cloner le repo
+### Cloner le repo ou télécharger le zip
 ```bash
-git clone https://github.com/Nelo0o/trello-clone.git
+git clone https://github.com/Nelo0o/trellow.git
 ```
 ### Installer les dépendances
 ```bash
